@@ -2,12 +2,14 @@ package com.salapp.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.salapp.myapplication.view.register.RegisterActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,9 +33,14 @@ public class MainActivity extends AppCompatActivity {
 
             if (usernameTxt.getText().toString().equals(username) && passwordTxt.getText().toString().equals(password)) {
                 Toast.makeText(getApplicationContext(), "Successfully", Toast.LENGTH_LONG).show();
+                Intent registerIntent = new Intent(this, RegisterActivity.class);
+
+                setIntent(registerIntent);
+                startActivity(registerIntent);
+
             } else if (usernameTxt.getText().toString().equals(username) && !passwordTxt.getText().toString().equals(password)) {
                 Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_LONG).show();
-            } else if(!usernameTxt.getText().toString().equals(username) && passwordTxt.getText().toString().equals(password)) {
+            } else if (!usernameTxt.getText().toString().equals(username) && passwordTxt.getText().toString().equals(password)) {
                 Toast.makeText(getApplicationContext(), "Invalid User", Toast.LENGTH_LONG).show();
             } else if (!usernameTxt.getText().toString().equals(username) && !passwordTxt.getText().toString().equals(password)) {
                 Toast.makeText(getApplicationContext(), "Invalid Username/Password", Toast.LENGTH_LONG).show();
