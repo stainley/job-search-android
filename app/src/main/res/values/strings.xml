@@ -5,4 +5,10 @@
     <string name="username">Username</string>
     <string name="passwordHint">Password</string>
     <string name="logo">Lambton College Logo</string>
+    <string name="or">or</string>
+    <string name="cont_button">Continue</string>
+    <string name="company_logo">company logo</string>
+    <string name="create_an_account_or_sign_in">Create an account or sign in.</string>
+    <string name="read_to_take_the_next_step">Read to take the next step?</string>
+    <string name="email_address">Email address</string>
 </resources>
