@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Outreach</string>
-    <string name="login">Sign In</string>
-    <string name="loginText">LOGIN</string>
-    <string name="username">Username</string>
-    <string name="passwordHint">Password</string>
     <string name="logo">Lambton College Logo</string>
     <string name="or">or</string>
     <string name="cont_button">Continue</string>

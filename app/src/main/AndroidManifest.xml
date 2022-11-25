@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
-            android:name=".view.register.RegisterActivity"
+            android:name="ca.appolizer.AppolizerJobSearch.view.register.RegisterActivity"
             android:theme="@style/IndeedSignInBlue"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="ca.appolizer.AppolizerJobSearch.LoginActivity"
             android:exported="true"
             android:theme="@style/IndeedSignInBlue"
             >

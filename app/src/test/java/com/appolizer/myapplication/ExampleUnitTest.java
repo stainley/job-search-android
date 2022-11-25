@@ -1,6 +1,5 @@
-package com.salapp.myapplication;
+package com.appolizer.myapplication;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
