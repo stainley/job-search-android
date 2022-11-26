@@ -7,6 +7,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import ca.appolizer.AppolizerJobSearch.view.jobs.JobDescriptionActivity;
+import ca.appolizer.AppolizerJobSearch.view.jobs.JobListActivity;
 import ca.appolizer.AppolizerJobSearch.view.register.RegisterActivity;
 import com.salapp.myapplication.R;
 
@@ -22,7 +24,8 @@ public class LoginActivity extends AppCompatActivity {
 
         Button loginButton = findViewById(R.id.btnSignin);
         loginButton.setOnClickListener(view -> {
-
+            Intent jobPosting = new Intent(this, JobListActivity.class);
+            startActivity(jobPosting);
         });
 
         Button btnCreateAccount = findViewById(R.id.btnCreateAccount);
