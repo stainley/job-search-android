@@ -16,18 +16,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.salapp.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import ca.appolizer.AppolizerJobSearch.model.Job;
 import ca.appolizer.AppolizerJobSearch.view.jobs.JobDescriptionActivity;
 
 public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
 
-    private final ArrayList<Job> jobs;
+    private List<Job> jobs;
+
+    private ArrayList<Job> arrayListJobs = new ArrayList<>();
     private final Context context;
 
     public JobsAdapter(ArrayList<Job> jobs, Context context) {
         this.jobs = jobs;
         this.context = context;
+        this.arrayListJobs.addAll(jobs);
     }
 
     @NonNull
@@ -58,6 +63,21 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
             jobIntent.putExtras(bundle);
             context.startActivity(jobIntent);
         });
+    }
+
+    public void filter(String text) {
+        text = text.toLowerCase();
+        jobs.clear();
+
+        if (text.length() == 0) {
+            jobs.addAll(arrayListJobs);
+        } else {
+            StringBuilder sb = new StringBuilder();
+            sb.append(text);
+            jobs = arrayListJobs.stream().filter(job -> job.getTitle().toLowerCase().contains(sb))
+                    .collect(Collectors.toList());
+        }
+        notifyDataSetChanged();
     }
 
     @Override
