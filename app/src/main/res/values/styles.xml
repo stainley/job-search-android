@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="IndeedSignInBlue" parent="Theme.AppCompat.Light">
-        <item name="windowActionBar">false</item>
+    <style name="IndeedSignInBlue" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFullscreen">false</item>
         <item name="backgroundColor">@drawable/button_shape</item>
     </style>
 </resources>

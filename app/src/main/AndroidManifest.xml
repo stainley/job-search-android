@@ -15,14 +15,17 @@
 
         <activity
             android:name="ca.appolizer.AppolizerJobSearch.view.jobs.JobListActivity"
-
             android:exported="false"
             android:theme="@style/IndeedSignInBlue" />
         <activity
             android:name="ca.appolizer.AppolizerJobSearch.view.jobs.JobDescriptionActivity"
             android:exported="false"
             android:label="@string/title_activity_job_posted"
-            android:theme="@style/IndeedSignInBlue" />
+            android:theme="@style/IndeedSignInBlue">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.appolizer.AppolizerJobSearch.view.jobs.JobListActivity"/>
+        </activity>
         <activity
             android:name="ca.appolizer.AppolizerJobSearch.view.register.RegisterActivity"
             android:exported="false"

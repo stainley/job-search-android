@@ -16,18 +16,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.salapp.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import ca.appolizer.AppolizerJobSearch.model.Job;
 import ca.appolizer.AppolizerJobSearch.view.jobs.JobDescriptionActivity;
 
 public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
 
-    private final ArrayList<Job> jobs;
+    private List<Job> jobs;
+
+    private ArrayList<Job> arrayListJobs = new ArrayList<>();
     private final Context context;
 
     public JobsAdapter(ArrayList<Job> jobs, Context context) {
         this.jobs = jobs;
         this.context = context;
+        this.arrayListJobs.addAll(jobs);
     }
 
     @NonNull
@@ -47,17 +52,34 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.jobTitleTxt.setText(jobs.get(position).getTitle());
         holder.jobDescriptionTxt.setText(jobs.get(position).getDescription());
+        holder.jobCompanyTxt.setText(jobs.get(position).getCompanyName());
+        holder.jobLocationTxt.setText(jobs.get(position).getLocation());
 
         holder.jobCardView.setOnClickListener(view -> {
             Toast.makeText(holder.itemView.getContext(), "Job: " + position + " " + jobs.get(position).getTitle(), Toast.LENGTH_SHORT).show();
             Intent jobIntent = new Intent(context, JobDescriptionActivity.class);
             jobIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Bundle bundle = new Bundle();
-            bundle.putString("title", jobs.get(position).getTitle());
-            bundle.putString("description", jobs.get(position).getDescription());
-            jobIntent.putExtras(bundle);
+
+            jobIntent.putExtra("title", jobs.get(position).getTitle());
+            jobIntent.putExtra("description", jobs.get(position).getDescription());
+
             context.startActivity(jobIntent);
         });
+    }
+
+    public void filter(String text) {
+        text = text.toLowerCase();
+        jobs.clear();
+
+        if (text.length() == 0) {
+            jobs.addAll(arrayListJobs);
+        } else {
+            StringBuilder sb = new StringBuilder();
+            sb.append(text);
+            jobs = arrayListJobs.stream().filter(job -> job.getTitle().toLowerCase().contains(sb))
+                    .collect(Collectors.toList());
+        }
+        notifyDataSetChanged();
     }
 
     @Override
@@ -68,14 +90,19 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView jobTitleTxt;
-        public TextView jobDescriptionTxt;
 
+        private TextView jobLocationTxt;
+
+        private TextView jobCompanyTxt;
+        public TextView jobDescriptionTxt;
         private CardView jobCardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             jobTitleTxt = itemView.findViewById(R.id.jobTitle);
             jobDescriptionTxt = itemView.findViewById(R.id.jobDescription);
+            jobLocationTxt = itemView.findViewById(R.id.jobLocation);
+            jobCompanyTxt = itemView.findViewById(R.id.companyName);
             jobCardView = itemView.findViewById(R.id.jobPost);
 
         }
