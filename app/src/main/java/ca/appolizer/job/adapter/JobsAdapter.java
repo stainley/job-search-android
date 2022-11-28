@@ -52,15 +52,17 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.jobTitleTxt.setText(jobs.get(position).getTitle());
         holder.jobDescriptionTxt.setText(jobs.get(position).getDescription());
+        holder.jobCompanyTxt.setText(jobs.get(position).getCompanyName());
+        holder.jobLocationTxt.setText(jobs.get(position).getLocation());
 
         holder.jobCardView.setOnClickListener(view -> {
             Toast.makeText(holder.itemView.getContext(), "Job: " + position + " " + jobs.get(position).getTitle(), Toast.LENGTH_SHORT).show();
             Intent jobIntent = new Intent(context, JobDescriptionActivity.class);
             jobIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            Bundle bundle = new Bundle();
-            bundle.putString("title", jobs.get(position).getTitle());
-            bundle.putString("description", jobs.get(position).getDescription());
-            jobIntent.putExtras(bundle);
+
+            jobIntent.putExtra("title", jobs.get(position).getTitle());
+            jobIntent.putExtra("description", jobs.get(position).getDescription());
+
             context.startActivity(jobIntent);
         });
     }
@@ -88,14 +90,19 @@ public class JobsAdapter extends RecyclerView.Adapter<JobsAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView jobTitleTxt;
-        public TextView jobDescriptionTxt;
 
+        private TextView jobLocationTxt;
+
+        private TextView jobCompanyTxt;
+        public TextView jobDescriptionTxt;
         private CardView jobCardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             jobTitleTxt = itemView.findViewById(R.id.jobTitle);
             jobDescriptionTxt = itemView.findViewById(R.id.jobDescription);
+            jobLocationTxt = itemView.findViewById(R.id.jobLocation);
+            jobCompanyTxt = itemView.findViewById(R.id.companyName);
             jobCardView = itemView.findViewById(R.id.jobPost);
 
         }

@@ -1,20 +1,13 @@
 package ca.appolizer.AppolizerJobSearch.view.jobs;
 
-import androidx.appcompat.app.ActionBar;
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.salapp.myapplication.R;
-import com.salapp.myapplication.databinding.ActivityJobListBinding;
-import com.salapp.myapplication.databinding.ActivityJobPostedBinding;
 
 import java.util.ArrayList;
 
@@ -22,7 +15,6 @@ import ca.appolizer.AppolizerJobSearch.adapter.JobsAdapter;
 import ca.appolizer.AppolizerJobSearch.model.Job;
 
 public class JobListActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
-
     private SearchView jobSearchView;
 
     private RecyclerView recyclerViewJobList;
@@ -37,8 +29,10 @@ public class JobListActivity extends AppCompatActivity implements SearchView.OnQ
 
         recyclerViewJobList = findViewById(R.id.recyclerViewJob);
         ArrayList<Job> jobs = new ArrayList<>();
-        jobs.add(new Job("Java Developer", "7 year job"));
-        jobs.add(new Job("Python", "1 year job"));
+        jobs.add(new Job("Senior Back-End Developers, Java/Spring Boot", "7 year job", "Procom", "Toronto, Ontario, Canada (On-site)"));
+        jobs.add(new Job("Senior Java Developer - Payments", "1 year job", "Bally's Interactive", "Toronto, Ontario, Canada"));
+        jobs.add(new Job("Android Developer", "", "Allegis Group", "Markham, ON"));
+        jobs.add(new Job("Senior iOS Engineer", "", "Motion Recruitment", "Toronto, ON (Hybrid)"));
         jobsAdapter = new JobsAdapter(jobs, getApplicationContext());
 
         jobSearchView = findViewById(R.id.jobSearch);
@@ -48,10 +42,6 @@ public class JobListActivity extends AppCompatActivity implements SearchView.OnQ
         recyclerViewJobList.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewJobList.setAdapter(jobsAdapter);
 
-        // TODO: create a card list jobs. When clicked invoke the job description
-        Intent jobDescriptionIntent = new Intent(this, JobDescriptionActivity.class);
-
-        //startActivity(jobDescriptionIntent, bundle);
     }
 
     @Override
