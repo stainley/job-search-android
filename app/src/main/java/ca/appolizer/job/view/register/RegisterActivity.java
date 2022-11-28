@@ -1,12 +1,9 @@
-package com.salapp.myapplication.view.register;
+package ca.appolizer.AppolizerJobSearch.view.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.salapp.myapplication.R;
 

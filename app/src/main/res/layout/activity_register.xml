@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.register.RegisterActivity">
+    tools:context="ca.appolizer.AppolizerJobSearch.view.register.RegisterActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -16,7 +16,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/indeed_logo" />
+        app:srcCompat="@drawable/logo_appolize" />
 
     <TextView
         android:id="@+id/textView"
@@ -102,7 +102,6 @@
 
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"

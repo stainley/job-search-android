@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -9,20 +10,33 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:supportsRtl="true"
         tools:targetApi="31">
+
         <activity
-            android:name=".view.register.RegisterActivity"
-            android:theme="@style/IndeedSignInBlue"
-            android:exported="false" />
+            android:name="ca.appolizer.AppolizerJobSearch.view.jobs.JobListActivity"
+            android:exported="false"
+            android:theme="@style/IndeedSignInBlue" />
         <activity
-            android:name=".LoginActivity"
+            android:name="ca.appolizer.AppolizerJobSearch.view.jobs.JobDescriptionActivity"
+            android:exported="false"
+            android:label="@string/title_activity_job_posted"
+            android:theme="@style/IndeedSignInBlue">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ca.appolizer.AppolizerJobSearch.view.jobs.JobListActivity"/>
+        </activity>
+        <activity
+            android:name="ca.appolizer.AppolizerJobSearch.view.register.RegisterActivity"
+            android:exported="false"
+            android:theme="@style/IndeedSignInBlue" />
+        <activity
+            android:name="ca.appolizer.AppolizerJobSearch.LoginActivity"
             android:exported="true"
-            android:theme="@style/IndeedSignInBlue"
-            >
+            android:theme="@style/IndeedSignInBlue">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

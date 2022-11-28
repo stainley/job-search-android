@@ -1,4 +1,4 @@
-package com.salapp.myapplication;
+package com.appolizer.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.runner.AndroidJUnitRunner;
 import androidx.test.uiautomator.By;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
@@ -29,8 +28,6 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
 
-    private UiDevice device;
-
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -40,7 +37,7 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void startMainActivityFromHome() throws UiObjectNotFoundException {
-        device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        UiDevice device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
 
         // start from the home screen
         device.pressHome();
